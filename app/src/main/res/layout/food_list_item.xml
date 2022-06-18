@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.example.vesdecode2022.model.dataClasses.Product" />
+        <variable
+            name="UtilPreProc"
+            type="com.example.vesdecode2022.utils.UtilProductPreProcess" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:elevation="0dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="#0FFFFFFF"
+                android:foregroundTint="@color/black"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/frameLayout"
+                    android:layout_width="167dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/product_img"
+                        android:layout_width="167dp"
+                        android:layout_height="170dp"
+                        android:src="@drawable/food_phot" />
+
+                    <ImageView
+                        android:id="@+id/tag_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:src="@drawable/ic_discount_tag" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{product.name}"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="500г" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:background="#0FFFFFFF"
+                android:backgroundTint="@color/black">
+
+                <ViewSwitcher
+                    android:id="@+id/switcher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/add_to_cart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="12dp"
+                        android:text="@{UtilPreProc.Companion.parsePrice(product)}"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/decrease_button"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:text="-" />
+
+                        <TextView
+                            android:id="@+id/amount_of_product"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="0" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/increase_button"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:text="+" />
+                    </LinearLayout>
+
+
+                </ViewSwitcher>
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>
+
