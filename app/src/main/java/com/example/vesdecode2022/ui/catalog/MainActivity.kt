@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
+import androidx.core.view.size
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -70,29 +71,28 @@ class MainActivity : AppCompatActivity() {
         })
         dataBinding.viewmodel?.categories?.observe(this, Observer {
             fetchTabs(it)
+            dataBinding.productList.adapter?.notifyDataSetChanged()
         })
         dataBinding.viewmodel?.cost?.observe(this, Observer {
             dataBinding.materialButton.text = UtilProductPreProcess.Companion.parseTotalCost(it)
         })
         dataBinding.viewmodel?.order?.observe(this, Observer {
-            if (it.size>0){
-                badge.isVisible=true
+            if (it.size > 0) {
+                badge.isVisible = true
                 badge.number = it.size
             } else badge.isVisible = false
         })
     }
 
     fun fetchTabs(categories: List<Category>) {
-        var firstTab: TabLayout.Tab? = null
+        dataBinding.tabLayout.removeAllTabs()
         for (cat in categories) {
 
             val tab = dataBinding.tabLayout.newTab()
             tab.text = cat.name
             tab.id = cat.id
             dataBinding.tabLayout.addTab(tab)
-            if (firstTab == null) firstTab = tab
         }
-
         with(dataBinding) {
             tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
             })
         }
-        dataBinding.tabLayout.selectTab(firstTab)
+
     }
 
     fun setupListeners() {
@@ -136,7 +136,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         dataBinding.viewmodel?.getData()
-        fetchTabs(dataBinding.viewmodel?.categories?.value!!)
         super.onResume()
     }
 }

@@ -24,8 +24,8 @@ open class CatalogViewModel: BaseViewModel() {
         Repository.getInstance().getCategoryList().apply {
             categories.value = this
         }
-
     }
+
 
     fun getCost(){
         Repository.cost.apply {
