@@ -7,6 +7,7 @@
         <variable
             name="product"
             type="com.example.vesdecode2022.model.dataClasses.Product" />
+
         <variable
             name="UtilPreProc"
             type="com.example.vesdecode2022.utils.UtilProductPreProcess" />
@@ -14,6 +15,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/product_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -45,10 +47,10 @@
 
                     <ImageView
                         android:id="@+id/tag_img"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_margin="12dp"
-                        android:src="@drawable/ic_discount_tag" />
+                        android:src="@{context.getDrawable(UtilPreProc.Companion.resolveTagImg(product)) }" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -67,7 +69,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="500г" />
+                        android:text="@{UtilPreProc.Companion.parseMeasure(product)}" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -94,6 +96,7 @@
                         android:textColor="@color/black" />
 
                     <LinearLayout
+                        android:id="@+id/amount_in_cart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -113,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
-                            android:text="0" />
+                            android:text="@{String.valueOf(product.amount)}" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/increase_button"

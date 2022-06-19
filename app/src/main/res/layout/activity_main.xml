@@ -12,6 +12,8 @@
         <variable
             name="viewmodel"
             type="com.example.vesdecode2022.ui.catalog.CatalogViewModel" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,8 +34,9 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
-
+                android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/main_menu"
+                app:navigationIcon="@drawable/ic_filter">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,29 +64,8 @@
             app:tabPaddingStart="20dp"
             app:tabRippleColor="@null"
             app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/black">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Роллы" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Суши" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Наборы" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="Горячие блюда" />
-
+            app:tabTextColor="@color/black"
+            android:contentDescription="tab layout for tabs">
         </com.google.android.material.tabs.TabLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -93,7 +75,7 @@
             android:layout_margin="8dp"
             android:backgroundTint="@color/active"
             android:contentDescription="Кнопка"
-            android:text="Цена"
+            android:text="Выберите товары"
             android:textColor="@color/white"
             app:background="@color/active"
             app:cornerRadius="10dp"
@@ -103,7 +85,6 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_list"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

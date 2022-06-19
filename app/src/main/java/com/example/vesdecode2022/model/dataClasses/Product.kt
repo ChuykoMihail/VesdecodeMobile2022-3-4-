@@ -14,5 +14,6 @@ data class Product(
     val proteins_per_100_grams: Float,
     val fats_per_100_grams: Float,
     val carbohydrates_per_100_grams: Float,
-    val tag_ids: List<Int>
+    val tag_ids: List<Int>,
+    var amount: Int = 0
 )

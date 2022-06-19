@@ -12,6 +12,8 @@ class MApplication: Application() {
         super.onCreate()
         JsonLocalGetter.context = applicationContext
         Repository.getInstance().getProductsList()
+        Repository.getInstance().getCategoryList()
+        Repository.getInstance().getTagList()
     }
 
 

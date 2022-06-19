@@ -13,6 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/splashScreenTheme">
         <activity
+            android:name=".ui.cart.CartActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Vesdecode2022"/>
+        <activity
+            android:name=".ui.detailsprod.DetailsProdActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Vesdecode2022" />
+        <activity
             android:name=".ui.catalog.MainActivity"
             android:exported="true">
             <intent-filter>

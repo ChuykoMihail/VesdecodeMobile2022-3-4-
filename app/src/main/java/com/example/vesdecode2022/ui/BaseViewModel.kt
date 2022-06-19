@@ -7,12 +7,12 @@ import com.example.vesdecode2022.model.dataClasses.Product
 import com.example.vesdecode2022.model.resources.Repository
 
 open class BaseViewModel: ViewModel() {
-    val products = MutableLiveData<List<Product>>()
-    val categories = MutableLiveData<List<Category>>()
+    val products = MutableLiveData<MutableList<Product>>()
 
-    fun getData(){
-        Repository.getInstance().getProductsList().apply {
-            products.value = this
+
+    fun getProducts(){
+        Repository.getInstance().refreshProductList().apply {
+            products.value = this.toMutableList()
         }
     }
 
